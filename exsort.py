@@ -7,7 +7,7 @@ from collections import deque
 
 
 # function for test file generation
-def generate_big_file(num_lines=1000000000, line_length=10, name='data.txt'):
+def generate_big_file(num_lines=1000, line_length=10, name='data.txt'):
     with open(name, 'w') as out_file:
         for _ in range(num_lines):
             random_string = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(line_length))
@@ -104,7 +104,7 @@ class Sorter:
         os.rename(self.chunks.pop(), result_file)
 
     @classmethod
-    def sort(cls, file_to_sort: str, result_file: str = 'result.txt', chunk_size: int = 100000000):
+    def sort(cls, file_to_sort: str, result_file: str = 'result.txt', chunk_size: int = 100):
         """
         Fancy wrapper for one-line sorting.
         """
@@ -113,6 +113,6 @@ class Sorter:
         sorter.merge(result_file)
 
 if __name__=="__main__":
-    # generate_big_file()
+    generate_big_file()
     Sorter.sort('data.txt', 'result.txt')
 
